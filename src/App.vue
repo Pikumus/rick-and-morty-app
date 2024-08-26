@@ -1,21 +1,17 @@
+<script setup lang="ts">
+import NavigationMain from "@/components/Navigation/NavigationMain.vue";
+</script>
 <template>
-  <nav>
-    <router-link :to="appRoutes.CharacterSearchPageRoute.path"
-      >Character
-    </router-link>
-    |
-    <router-link :to="appRoutes.LocationSearchPageRoute.path"
-      >Location
-    </router-link>
-    |
-    <router-link :to="appRoutes.EpisodeSearchPageRoute.path"
-      >Episode
-    </router-link>
-  </nav>
-  <router-view />
+  <div class="app">
+    <NavigationMain />
+    <router-view />
+  </div>
 </template>
 
-<style lang="scss"></style>
-<script setup lang="ts">
-import { appRoutes } from "@/router/appRoutes";
-</script>
+<style lang="scss">
+.app {
+  height: 100vh;
+  overflow: auto;
+  background-color: rgb(30, 32, 38);
+}
+</style>

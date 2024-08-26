@@ -37,7 +37,7 @@ export const useLocationSearchStore = defineStore("locationSearch", {
 
       try {
         const { data } = await axios.get<APIResponse<Location>>(
-          `https://rickandmortyapi.com/api/location/?page=${this.currentPage}&name=${this.searchQuery}`
+          `https://rickandmortyapi.com/api/location/?page=${this.currentPage}&name=${this.searchQuery}`,
         );
         this.locations = data.results;
         this.totalPages = data.info.pages;

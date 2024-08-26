@@ -37,7 +37,7 @@ export const useCharacterSearchStore = defineStore("characterSearch", {
 
       try {
         const { data } = await axios.get<APIResponse<Character>>(
-          `https://rickandmortyapi.com/api/character/?page=${this.currentPage}&name=${this.searchQuery}`
+          `https://rickandmortyapi.com/api/character/?page=${this.currentPage}&name=${this.searchQuery}`,
         );
         this.characters = data.results;
         this.totalPages = data.info.pages;

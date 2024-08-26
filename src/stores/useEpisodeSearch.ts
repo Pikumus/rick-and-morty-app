@@ -36,11 +36,11 @@ export const useEpisodeSearch = defineStore("episodeSearch", {
 
       try {
         const { data } = await axios.get<APIResponse<Episode>>(
-          `https://rickandmortyapi.com/api/episode?page=${this.currentPage}&name=${this.searchQuery}`
+          `https://rickandmortyapi.com/api/episode?page=${this.currentPage}&name=${this.searchQuery}`,
         );
         this.episodes = data.results;
         this.totalPages = data.info.pages;
-      } catch (error) {
+      } catch {
         this.error = "Error fetching episodes";
       } finally {
         this.loading = false;

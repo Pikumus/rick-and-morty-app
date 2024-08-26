@@ -34,13 +34,13 @@ export const useCharacterStore = defineStore("character", {
       this.error = null;
       try {
         const { data } = await axios.get<Character>(
-          `https://rickandmortyapi.com/api/character/${id}`
+          `https://rickandmortyapi.com/api/character/${id}`,
         );
         this.character = data;
 
         // Получение эпизодов
         const episodePromises = data.episode.map((url) =>
-          axios.get<Episode>(url)
+          axios.get<Episode>(url),
         );
         const episodesResponses = await Promise.all(episodePromises);
         this.episodes = episodesResponses.map((response) => response.data);
