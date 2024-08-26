@@ -36,19 +36,19 @@ export const useLocationStore = defineStore("locationStore", {
       this.error = null;
       try {
         const { data } = await axios.get<Location>(
-          `https://rickandmortyapi.com/api/location/${id}`
+          `https://rickandmortyapi.com/api/location/${id}`,
         );
         this.location = data;
 
         // Получаем персонажей с помощью метода map который к каждому элементу применяет описанную инструкцию axios get резидентс это тип который должный получить
         const residentsPromises = data.residents.map((url) =>
-          axios.get<Residents>(url)
+          axios.get<Residents>(url),
         );
         // Дожидаемся всех персонажей
         const residentsResponses = await Promise.all(residentsPromises);
         // Устанавливаем персонажей в состояние residents
         this.residents = residentsResponses.map((response) => response.data);
-      } catch (error) {
+      } catch {
         this.error = "Error fetching residents data";
       } finally {
         this.loading = false;

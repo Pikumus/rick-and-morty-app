@@ -35,16 +35,16 @@ export const useEpisodeStore = defineStore("episode", {
       this.error = null;
       try {
         const { data } = await axios.get<Episode>(
-          `https://rickandmortyapi.com/api/episode/${id}`
+          `https://rickandmortyapi.com/api/episode/${id}`,
         );
         this.episode = data;
 
         const characterPromises = data.characters.map((url) =>
-          axios.get<Character>(url)
+          axios.get<Character>(url),
         );
         const characterResponses = await Promise.all(characterPromises);
         this.characters = characterResponses.map((response) => response.data);
-      } catch (error) {
+      } catch {
         this.error = "Error fetching data";
       } finally {
         this.loading = false;
